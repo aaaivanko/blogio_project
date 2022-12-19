@@ -23,3 +23,7 @@ def topic_info(request, topic_id):
 
 def empty_view(request):
     pass
+
+
+def some_func(request):
+    pass
