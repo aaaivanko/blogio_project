@@ -1,0 +1,15 @@
+{% extends 'my_blog_app/base.html' %}
+
+{% block content %}
+    <h1>All available topics</h1>
+
+    <ul>
+        {% for topic in all_topics %}
+            <li>{{ topic }}</li>
+        <br>
+        {% empty %}
+            <li>No topics available yet!</li>
+        {% endfor %}
+    </ul>
+
+{% endblock content %}
