@@ -1,11 +1,12 @@
 {% extends 'my_blog_app/base.html' %}
 
 {% block content %}
-    <h1>All available topics</h1>
+    <h1>Information about topic {{ topic }}</h1>
 
     <ul>
-        {% for topic in all_topics %}
-            <li><a href="{% url 'my_blog:topic_info' topic.id %}">{{ topic }}</a></li>
+        {% for info in topic_infos %}
+            <li>{{ info.name }}</li>
+            <li>{{ info.text }}</li>
         <br>
         {% empty %}
             <li>No topics available yet!</li>
