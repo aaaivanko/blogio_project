@@ -19,11 +19,3 @@ def topic_info(request, topic_id):
     topic_infos = topic.topicinfo_set.order_by('-date_added')
     context = {'topic': topic, 'topic_infos': topic_infos, 'title': 'Topic infos'}
     return render(request, 'my_blog_app/topic_info.html', context)
-
-
-def empty_view(request):
-    pass
-
-
-def some_func(request):
-    pass
