@@ -8,5 +8,6 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('topics/', views.topics, name='topics'),
     path('topics/<int:topic_id>/', views.topic_info, name='topic_info'),
+    path('topics/new_topic/', views.new_topic, name='new_topic'),
 
 ]
