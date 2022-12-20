@@ -1,6 +1,9 @@
 {% extends 'my_blog_app/base.html' %}
 
 {% block content %}
+
+    <h1><a href="{% url 'my_blog:new_topic_info' topic.id %}">Add new topic info.</a></h1>
+
     <h1>Information about topic {{ topic }}</h1>
 
     <ul>

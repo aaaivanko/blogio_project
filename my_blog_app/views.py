@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 from .models import Topic
-from .forms import TopicForm
+from .forms import TopicForm, TopicInfoForm
 
 
 def home(request):
@@ -35,3 +35,21 @@ def new_topic(request):
             return redirect('my_blog:topics')
     context = {'form': form, 'title': 'Create new topic.'}
     return render(request, 'my_blog_app/new_topic.html', context)
+
+
+def new_topic_info(request, topic_id):
+    """Create new topic info according to the particular topic."""
+    # get single topic for topic id
+    topic = Topic.objects.get(id=topic_id)
+    # create empty form if method != POST
+    if request.method != 'POST':
+        form = TopicInfoForm()
+    else:
+        form = TopicInfoForm(request.POST)
+        if form.is_valid():
+            new_single_topic_ingo = form.save(commit=False)
+            new_single_topic_ingo.topic = topic
+            new_single_topic_ingo.save()
+            return redirect('my_blog:topic_info', id=topic.id)
+    context = {'form': form, 'title': 'Create new Topic Info!', 'topic': topic}
+    return render(request, 'my_blog_app/new_topic_info.html', context)

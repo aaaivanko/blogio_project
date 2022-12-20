@@ -1,0 +1,13 @@
+{% extends 'my_blog_app/base.html' %}
+
+{% block content %}
+
+    <h1>Create new Topic Info for topic {{ topic.name }}</h1>
+
+<form action="{% url 'my_blog:new_topic_info' topic.id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Add new topic info.</button>
+</form>
+
+{% endblock content %}
